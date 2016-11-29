@@ -1,0 +1,34 @@
+<table  class="table table-bordered" style="margin-top: -20px;">
+				<tr>
+					<td class="col-xs-1">序号</td>
+					<td class="col-xs-1">商品的ID</td>
+					<td class="col-xs-4">商品名称</td>
+					<td class="col-xs-2">商品图片</td>
+					<td class="col-xs-1">商品价格</td>
+					<td class="col-xs-1">商品折扣</td>
+					<td class="col-xs-2">操作</td>
+				</tr>
+				<tr>
+					<td colspan="7" ng-show="isLoading">
+						<ul class="loadEffect">
+							<li class="scalePoint"></li>
+							<li class="scalePoint"></li>
+							<li class="scalePoint"></li>
+						</ul>
+					</td>
+				</tr>
+				<tr ng-hide="isLoading" ng-repeat="pro in cartList">
+					<td class="col-xs-1">{{$index+1}}</td>
+					<td class="col-xs-1">{{pro.goodsID}}</td>
+					<td class="col-xs-4"><a href="#/detail/{{pro.goodsID}}">{{pro.goodsName}}</a></td>
+					<td class="col-xs-2"><img src="{{pro.goodsListImg}}" style="width: 80px;height: 80px;"/></td>
+					<td class="col-xs-1">{{pro.price}}</td>
+					<td class="col-xs-1">{{pro.discount}}</td>
+					<td class="col-xs-2">
+						<button ng-show="isLogin" ng-click="delete(pro,$index)">{{deleteStr}}</button>
+					</td>
+				</tr>
+				<tr ng-show="isNone" >
+					<td colspan="7" class="text-center">亲，我的口袋空啦，去<a href="#/home">逛逛吧</a></td>
+				</tr>
+			</table>

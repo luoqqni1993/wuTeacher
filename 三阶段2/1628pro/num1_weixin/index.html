@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="swiper/swiper-3.4.0.min.css"/>
+		<link rel="stylesheet" type="text/css" href="swiper/animate.css"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	</head>
+	<body>
+		<!--fullpage-->
+		<div class="swiper-container" id="container1">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<div class="index-build">
+						<img src="images/indexBuilding.png"  class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="0.5s" />
+					</div>
+					<div class="index-cloud ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1.5s">
+						<img src="images/indexCloud.png" alt="" class="ani" swiper-animate-effect="alwayScale" swiper-animate-duration="1.5s" swiper-animate-delay="2.7s"/>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<p class="ani" swiper-animate-effect="rotateOutDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">内容</p>
+				</div>
+				<div class="swiper-slide">第3页</div>
+				<div class="swiper-slide">第4页</div>
+				<div class="swiper-slide">第5页</div>
+			</div>
+		</div>
+		<div class="tip">
+			请将屏幕竖向浏览
+		</div>
+	</body>
+	<script src="swiper/swiper-3.4.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="swiper/swiper.animate1.0.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var swiper = new Swiper("#container1",{
+			direction:"vertical",
+			onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+		    	swiperAnimateCache(swiper); //隐藏动画元素 
+		    	swiperAnimate(swiper); //初始化完成开始动画
+		  	}, 
+		  	onSlideChangeEnd: function(swiper){ 
+			    swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+			} 
+		});
+	</script>
+</html>

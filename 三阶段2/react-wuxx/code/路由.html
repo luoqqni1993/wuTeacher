@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../build/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../build/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../build/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+	<script type="text/babel">
+		var style = {
+			footer:{
+				width:"100%",
+				height:"44px",
+				position:"fixed",
+				bottom:0,
+				left:0,
+				backgroundColor:"#f66"
+			},
+			div:{
+				float:"left",
+				width:"33.33%",
+				cursor:"pointer"
+			}
+			
+		}
+		
+		var Header=React.createClass({
+			render:function(){
+				return(
+					<div>这里是头部</div>
+					)
+			}
+		});
+		var Home = React.createClass({
+			render:function(){
+				return (
+					<p>这里是首页</p>
+				)
+			}
+		})
+		var List = React.createClass({
+			render:function(){
+				return (
+					<p>这里是列表</p>
+				)
+			}
+		})
+		var ShopCar = React.createClass({
+			render:function(){
+				return (
+					<p>这里是购物车</p>
+				)
+			}
+		})
+		
+		
+		var Footer = React.createClass({
+			handleClick:function(event){
+				var _title = event.target.getAttribute("title");
+				console.log(_title)
+				
+				switch(_title){
+					case "home":
+						//ReactDOM.unmountComponentAtNode(document.getElementById("list"));
+					 	ReactDOM.render(<Home/>,document.getElementById("list"));
+						break;
+					case "list":
+						//ReactDOM.unmountComponentAtNode(document.getElementById("list"));
+					 	ReactDOM.render(<List/>,document.getElementById("list"));
+						break;
+					case "shopCar":
+						//ReactDOM.unmountComponentAtNode(document.getElementById("list"));
+					 	ReactDOM.render(<ShopCar/>,document.getElementById("list"));
+						break;
+				}
+			},
+			render:function(){
+				return (
+					<div style={style.footer}>
+						<div  onClick={this.handleClick} title="home" style={style.div}>首页</div>
+						<div  onClick={this.handleClick} title="list"  style={style.div}>列表</div>
+						<div  onClick={this.handleClick} title="shopCar"  style={style.div}>购物车</div>
+					</div>
+				)
+			}
+		});
+		
+		
+		var Layout = React.createClass({
+			render:function(){
+				return (
+					<div >
+						<div id="header">
+							<Header/>
+						</div>
+						<div id="list"></div>
+						<div id="footer"></div>
+					</div>
+				)
+			}
+		});
+		
+		ReactDOM.render(<Layout/>,document.getElementById("app"));
+		ReactDOM.render(<Footer/>,document.getElementById("footer"));
+	</script>
+</html>

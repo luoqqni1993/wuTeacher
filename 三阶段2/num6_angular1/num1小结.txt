@@ -1,0 +1,69 @@
+angular
+	1、MVC思想
+		M：module/model---数据模型
+		V:view ---- 视图
+		C:controller --- 控制器（一个M和V的连接器）
+	2、如何定义一个module
+		html中的一个标签中写上指令
+			<body ng-app="myApp">
+		js中去实例化
+			var app = angular.module("myApp",[]);
+	3、如何定义一个控制器
+		html中找一个标签存放我们的控制器
+		<div ng-controller="myCtrl"></div>
+		js中去定义
+		app.controller("myCtrl",function($scope){
+			//我们可以定义我们需要的数据，但是必须得挂载到我们$scope上
+			$scope.message = "1628angular";
+			//可以定义我们常用的一些数据，复杂的也行，数组，对象，字符串，函数。。。。。
+			
+		})
+	4、循环
+		采用指令ng-repeat
+		比如说我们有一个数据 var lists= [1,2,4,6];
+		暴漏我们的数据出去，在控制器中通过$scope.lists = lists;这样的话我们在view中就可以直接使用{{lists}}
+		//list指代的就是我们的每一个数据，而lists就是我们在控制器中暴漏的那个数据
+		<div ng-repeat="list in lists">
+			{{list}}//就是我们需要显示的数据
+		</div>
+		如果我们需要显示数据的序号，那么我们直接通过{{$index}}去显示
+		有时候我们的数据是多层结构的，那么我们就可以使用我们的{{$parent.$index}}去显示父级的序号
+	5、数据的双向绑定（input/textarea/select..）
+		给文本域添加一个指令ng-model="name"
+			<input ng-model="userName"/>
+			姓名：{{userName}}
+		在此时，当我们用户进行输入我们的数据时，我们就可以直接的把输入的数据显示出来
+		如果我们需要在刚开始就显示我们初始数据，那么我们就可以在控制器中添加一个属性
+		$scope.userName = "wxx";
+		
+		体现了一个MVVM的思想，当我们的数据发生改变的时候，视图会变，当我们在视图中进行输入的时候，我们的视图发生了改变，那么数据也在发生着改变 Model View View Model
+	6、事件绑定ng-click
+		html元素中添加ng-click="event(para)",event表示事件名称，para表示参数
+		如果是在列表persons中每一项person进行一个点击事件，那么我们的参数就是当前这个对象evetnt(person),
+		js中在控制器中可以通过$scope.event=function(obj){obj.like++};
+	7、过滤器
+		{{表达式 | 过滤器名称 ： 5(可选)}}
+		uppercase/lowercase/number/currency/date
+		别的过滤器有哪些，并且去尝试写案例
+		排序：orderBy  结合ng-repeat使用的   MVVM  
+			select、input
+			正序（orderBy:'firstName'）、倒序(orderBy:'-firstName')
+			
+			orderBy:sortData:reverseData
+		
+		输入检索filter  <input ng-model="searchTxt"/>
+			列表渲染处   | filter:searchTxt
+			小故事：英文检索的不彻底
+			
+		自定义filter
+			{{person.sex | sexFilter}}
+			app.filter("sexFilter",function(){
+				return function(sex){
+					if(sex == "1"){
+						return "男";
+					}else if(sex == "0"){
+						return "女"
+					}
+				}
+			});
+		

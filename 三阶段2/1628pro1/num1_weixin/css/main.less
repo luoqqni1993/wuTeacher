@@ -1,0 +1,77 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.ab{
+    position: absolute;
+}
+img{
+    display: block;
+    width: 100%;
+}
+.swiper-container{
+//  width: 100%;
+    max-width: 640px;
+    height: 100%;
+    .swiper-wrapper{
+        width: 100%;
+        height: 100%;
+        .swiper-slide{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            &:nth-child(1){
+                background-color: #3e88f1;
+                .index-build{
+                    .ab;
+                    left:0;
+                    bottom: 0;
+                    width: 100%;
+                }
+                .index-cloud{
+                    .ab;
+                    top:5%;
+                    width: 94%;
+                    left:3%;
+                }
+                
+                
+                
+            }
+            &:nth-child(2){
+                background-color: skyblue;
+            }
+            &:nth-child(3){
+                background-color: orange;
+            }
+            &:nth-child(4){
+                background-color: green;
+            }
+            &:nth-child(5){
+                background-color: yellow;
+            }
+        }
+    }
+}
+
+@media (orientation:landscape){
+    .tip{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        background-color: rgba(0,0,0,0.5);
+        color: #fff;
+        font-size: 30px;  
+        display: flex;
+        align-items: center;    
+        justify-content: center; 
+        //以下为旧版本的写法
+//      display: -webkit-box;
+//      -webkit-box-pack: center;
+//      -webkit-box-align: center;
+    }
+}

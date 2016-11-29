@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/exit/exit",
+    "pages/find/find",
+    "pages/camera/camera",
+    "pages/user/user",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#f66",
+    "navigationBarTitleText": "足球圈",
+    "navigationBarTextStyle":"#fff"
+  },
+  "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "image/icon_component.png",
+      "selectedIconPath": "image/icon_component_HL.png",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/find/find",
+      "iconPath": "image/icon_API.png",
+      "selectedIconPath": "image/icon_API_HL.png",
+      "text": "发现"
+    }, {
+      "pagePath": "pages/camera/camera",
+      "iconPath": "image/icon_API.png",
+      "selectedIconPath": "image/icon_API_HL.png",
+      "text": "照相机"
+    }, {
+      "pagePath": "pages/user/user",
+      "iconPath": "image/icon_API.png",
+      "selectedIconPath": "image/icon_API_HL.png",
+      "text": "我的"
+    }, {
+      "pagePath": "pages/exit/exit",
+      "iconPath": "image/icon_API.png",
+      "selectedIconPath": "image/icon_API_HL.png",
+      "text": "退出"
+    }]
+  }
+}

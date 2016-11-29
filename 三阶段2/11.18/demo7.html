@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myFirstCtrl">
+		<ul>
+			<li ng-repeat="pro in provinces">
+				{{$parent.$index}}{{pro.name}}{{$index}}
+				<ul>
+					<li ng-repeat="city in pro.cities">
+						{{$parent.$index}}{{city.name}}{{$index+1}}
+					</li>
+				</ul>
+			</li>
+		</ul>
+		
+	</body>
+	<script src="js/demo7.js" type="text/javascript" charset="utf-8"></script>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myFirstCtrl">
+		{{person.name }}作为一个 {{ person.age}}岁的小伙,{{ person.marry ? "已经结婚":"还没结婚"}}你怎么可以整天sleep{{person.run()}}
+		<br/>
+		<div ng-repeat="list in lists">
+			{{list.name }}作为一个 {{ list.age}}岁的小伙,{{ list.marry ? "已经结婚":"还没结婚"}}你怎么可以整天sleep{{list.run()}}
+		</div>
+	</body>
+	<script src="js/demo4-1.js" type="text/javascript" charset="utf-8"></script>
+</html>

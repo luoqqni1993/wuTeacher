@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/libs/react.js" type="text/javascript" charset="utf-8"></script>	
+		<script src="js/libs/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/libs/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.note{
+				width: 100%;
+				height: auto;
+				background-color: #eee;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+		<div class="note">
+			<p>1、先引入react.js</p>
+			<p>2、引入react.dom.js(跟react的版本有关)</p>
+			<p>3、引入browser.js(解析react的语法的，jsx一个解析器)</p>
+			<p>4、创建一个js文件，将type改为type="text/babel"(babel是我们调用browser.js解析我们的react程序必不可少的)</p>
+			<p>5、创建我们的第一个组件<br/>
+				var Com = React.creatClass({<br/>
+					&nbsp;&nbsp;render:function(){<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;return (<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;//如果你需要多个标签使用，那么我们使用一个父级的标签去包裹（xml的语法）<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;//正常的我们的HTML结构（也可添加我们属性或者状态）<br/>
+						&nbsp;&nbsp;)<br/>
+					&nbsp;&nbsp;}<br/>
+				})
+			</p>
+		</div>
+	</body>
+	<script src="js/demo1.js" type="text/babel" charset="utf-8"></script>
+</html>

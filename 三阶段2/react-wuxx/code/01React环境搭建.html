@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React环境搭建</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <style>
+        .myzu{
+            color: red;
+            background: gray;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+	<p>1. React.js环境搭建（依赖文件引入）</p>
+             
+             <p>2. 各文件的作用：</p>
+                <p> a): react.js 负责react.js 框架的主要功能</p>
+                <p> b): react-dom.js 负责react.js关于DOM相关处理</p>
+                <p> c): browser.min.js 负责把react的语法（JSX语法）编译成JS；</p>
+             
+		
+		    <p> 把虚拟的组件渲染添加到真实DOM中</p>
+        <p> ReactDOM.render(参数一，要渲染到真实页面的组件，参数二要填加的位置)方法 </p>
+          <p> 1. 第一字母大写，驼峰式写法</p> 
+         <p> React.createClass({对象})该方法创建一个虚拟的DOM组件 </p>
+	<div class="box" id="box">
+		
+	</div>
+</body>
+<!-- jsx语法 -->
+<script type="text/babel">
+ 
+	var MyCom = React.createClass({
+		render:function(){
+			return (<h1>这是我的第一个组件</h1>);
+		}
+	});
+  
+    ReactDOM.render(<MyCom></MyCom>,document.getElementById("box"));
+
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="../build/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../build/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../build/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../build/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.myTest{
+				color:#f66;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+		
+	</body>
+	<script type="text/babel">
+		$(document).ready(
+			function(){
+				var count = 0;
+				var style={
+					color:"#00f",
+					border:"1px solid #0f0"
+				}
+				var MyFirstComment = React.createClass({
+					getDefaultProps:function(){
+						console.log("test1",1);
+						return {name: "wxx"};
+					},
+					getInitialState:function(){
+						console.log("test2",2);
+						return {myCount: count++,
+                                ready: false};
+					},
+					componentWillMount:function(){
+						console.log("test3",3);
+						this.setState({
+							ready: true
+						})
+					},
+					render:function(){
+						console.log("test4",4);
+						return <p ref="childp">Hello, {this.props.name ? this.props.name : "World"}<br/>{"" + this.state.ready} {this.state.myCount}</p>
+					},
+					componentDidMount:function(){
+						console.log("test5",5);
+						$(ReactDOM.findDOMNode(this)).append("特殊的!");
+					},
+				});
+				
+				ReactDOM.render(<div style={style}><MyFirstComment ></MyFirstComment><MyFirstComment ></MyFirstComment></div>,document.getElementById("app"))
+		
+			}
+		);
+		
+	</script>
+</html>

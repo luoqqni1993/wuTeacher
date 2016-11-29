@@ -1,0 +1,55 @@
+<!--index.wxml-->
+<view class="container main-container">
+  <nav class="main-nav">
+    <ul>
+      <li class="{{current == 0 ? 'active' : ''}}" bindtap="changeIndex" data-index="0">足球现场</li>
+      <li class="{{current == 1 ? 'active' : ''}}" bindtap="changeIndex" data-index="1">足球生活</li>
+      <li class="{{current == 2 ? 'active' : ''}}" bindtap="changeIndex" data-index="2">足球美女</li>
+    </ul>
+  </nav>
+  <swiper class="main-list" current="{{current}}" indicator-dots="{{indicatorDots}}" bindchange="slideChange"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block>
+        <swiper-item>
+          <scroll-view class="swiper-item swiper-item-live" onPullDownRefresh="pullDownAction" onReachBottom="pullUpAction" scroll-y="true"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+            <ul class="proList">
+              <li>产品1</li>
+              <li>产品2</li>
+              <li>产品1</li>
+              <li>产品2</li>
+              <li>产品1</li>
+              <li>产品2</li>
+              <li>产品1</li>
+              <li>产品2</li>
+              <li>产品1</li>
+              <li>产品2</li>
+            </ul>
+         </scroll-view>
+        </swiper-item>
+         <swiper-item>
+          <scroll-view class="swiper-item swiper-item-life" scroll-y="true"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+           这里是足球生活的内容区域
+         </scroll-view>
+            
+        </swiper-item>
+         <swiper-item>
+          <scroll-view class="swiper-item swiper-item-girl" scroll-y="true"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+           这里是足球美女的内容区域
+         </scroll-view>
+              
+        </swiper-item>
+  </block>
+
+   <!--<block wx:for="{{imgs}}">
+        <swiper-item>
+            <image src="{{item.src}}"  class="slide-image" width="355" height="150" />
+        </swiper-item>
+  </block>-->
+
+  <!--<block>
+    <swiper-item>
+        <image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"  class="slide-image" width="355" height="150" />
+    </swiper-item>
+  </block>-->
+</swiper>
+</view>

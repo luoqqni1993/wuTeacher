@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myCtrl as mainCtrl">
+		{{mainCtrl.message}}
+		<div ng-controller="ctrl1 as homeCtrl">
+			{{homeCtrl.message}}
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app = angular.module("myApp",[]);
+		app.controller("myCtrl",function(){
+			this.message = "我是myCtrl"
+		})
+		app.controller("ctrl1",function(){
+			this.message="我是ctrl1"
+		})
+	</script>
+</html>

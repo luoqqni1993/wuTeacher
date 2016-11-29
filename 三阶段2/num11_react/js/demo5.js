@@ -1,0 +1,13 @@
+var Com = React.createClass({
+	render:function(){
+		return (
+			<div>
+				<p>我是react,欢迎来学习,记得把引入文件的type改为text/babel</p>{this.props.name ? this.props.name : "name去哪啦"}
+				{this.props.test || "test去哪啦"}
+			</div>
+		)
+	}
+});
+//name="1628最棒，我就是一个属性而已" 
+//test="你感觉怎么样"
+ReactDOM.render(<Com ></Com>,document.getElementById("app"));

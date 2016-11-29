@@ -1,0 +1,17 @@
+IntelliJ IDEA
+webStorm
+sublime
+EditPlugin
+
+android + h5 + ios
+1、个人中心，选取头像上传功能
+	ios <input type="file"/> 直接就显示拍照或者从相册选取
+	android 毫无反应 4.4或者以下版本
+			webview通讯机制 -- javascriptbridge
+			webview 由android提供，同时又是一个浏览器，虽然功能不是很全，运行js是可以的
+			H5，js又是运行于浏览器中，两个一拍即合，通过webview进行传输数据，
+			页面展示一个按钮，点击的时候，告诉android要进行调起摄像头，android执行命令，成功调起摄像头，完成操作，android告诉js，我操作完了，我把数据给你，你自己玩吧
+			android版本的坑，他要求在4.*之后添加一个@over****(会有提示，按照提示操作即可)
+			
+			
+hbuilder			

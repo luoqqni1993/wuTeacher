@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				list-style:none;
+				box-sizing: border-box;
+			}
+			article{
+				height: 300px;
+				border-bottom: 1px solid #ccc;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+			article header,article footer{
+				height: 50px;
+			}
+			article section{
+				flex: 1;
+			}
+			article header{
+				display: flex;
+			}
+			article header .userImg{
+				width: 38px;
+				height: 38px;
+				margin: 6px;
+			}
+			article header .userInfo{
+				flex: 1;
+				margin-top: 6px;
+			}
+			article footer ul{
+				display: flex;
+			}
+			article footer ul li{
+				flex: 1;
+				line-height: 50px;
+				margin: 0 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<article>
+			<header>
+				<div class="userImg"><img src="" alt="" style="width: 38px;height: 38px;background-color: #f66;" /></div>
+				<div class="userInfo">
+					<p>小M</p>
+					<p>发表于2016-11-8</p>
+				</div>
+			</header>
+			<section>
+				<img src="" style="width: 100%;height:100%;background-color: #f66;" />
+			</section>
+			<footer>
+				<ul>
+					<li>Like</li>
+					<li>Comment</li>
+					<li>Read more</li>
+				</ul>
+			</footer>
+		</article>
+	</body>
+</html>

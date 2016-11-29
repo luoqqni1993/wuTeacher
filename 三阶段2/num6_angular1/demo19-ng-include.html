@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
+		<style type="text/css">
+			.oLeft,.oRight{
+				height: 400px;
+				
+			}
+			.oLeft{
+				background-color: #f66;
+			}
+			.oRight{
+				background-color: #0f0;
+			}
+			.oLeftList{
+				margin: 0 -15px;
+			}
+			.oLeftList li{
+				border-right:5px solid transparent;
+			}
+			.oLeftList li.active1{
+				border-right:5px solid #00f;
+				background-color: #fff;
+			}
+		</style>
+		<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp" >
+		<div class="container" >
+			<div class="row" ng-controller="myCtrl">
+				<div class="col-xs-3 oLeft">
+					<div ng-include = "'tpls/include/list.html'"></div>
+				</div>
+				<div class="col-xs-9 oRight">
+					<div ng-include="tplName"></div>
+					<!--<p>数据：{{testInfo}}</p>
+					<div class="test" ng-controller="homeCtrl">
+						<p>{{testInfo}}</p>
+					</div>-->
+				</div>
+			</div>
+			<div ng-controller="testCtrl">
+				{{testInfo}}
+			</div>
+		</div>
+	</body>
+	<script src="js/demo19.js" type="text/javascript" charset="utf-8"></script>
+</html>

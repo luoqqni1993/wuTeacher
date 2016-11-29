@@ -1,0 +1,11 @@
+E[att] ---- img[alt]
+E[att = val]-----input[type="text"]
+E[att ^= "val"]
+E[att *= "val"]
+E[att $= "val"]
+E[att |= "val"]
+E[att ~= "val"]
+
+
+"p" ".p" "#p" "img[alt]"
+document.quertSelector()

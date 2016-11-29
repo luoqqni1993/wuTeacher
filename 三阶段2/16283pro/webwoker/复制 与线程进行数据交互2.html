@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<style>
+			span {
+				padding: 10px;
+			}
+		</style>
+	<script src="jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var worker = new Worker('t3.js');
+				worker.postMessage('');
+				worker.onmessage = function(e) {
+					var arr = e.data.split(';');
+					for(var i = 0, len = arr.length; i < len; i++) {
+						var dom = $('<span>' + arr[i] + '</span>');
+						$('body').append(dom);
+					}
+				}
+				var a= 0;
+				var timer = setInterval(function(){
+					console.log(++a);
+				},1000)
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id='body' style=' width: 400px; word-break:break-all; word-wrap:break-word; '>
+		</div>
+	</body>
+</html>

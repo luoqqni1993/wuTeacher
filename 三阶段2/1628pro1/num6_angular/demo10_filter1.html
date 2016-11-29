@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
+		<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myFirstCtrl">
+		<div class="container">
+			<table class="table table-bordered">
+				<tr class="well">
+					<td colspan="7">
+						看谁最瘦，欢迎投票
+					</td>
+					<td>
+						<input type="number" min="1" max="20" ng-model="showNum" />
+					</td>
+				</tr>
+				<tr>
+					<td>firstName</td>
+					<td>lastName</td>
+					<td>sex</td>
+					<td>salary</td>
+					<td>likeNum</td>
+					<td>disLikeNum</td>
+					<td>age</td>
+					<td>birthday</td>
+				</tr>
+				<tr ng-repeat="person in persons | limitTo:showNum">
+					<td>{{person.firstName | uppercase : 0}}</td>
+					<td>{{person.lastName | lowercase}}</td>
+					<td>{{person.sex | uppercase}}</td>
+					<td>{{person.salary | currency : "￥" : 0}}</td>
+					<td>{{person.like}}
+						<button class="btn btn-xs btn-success" ng-click="countLikeNum(person)">喜欢</button>
+					</td>
+					<td>{{person.disLike}}
+						<button class="btn btn-xs btn-danger" ng-click="countDisLikeNum(person)">不喜欢</button>
+					</td>
+					<td>{{person.age | number:0}}</td>
+					<td>{{person.birthday | date : 'yyyy-MM-dd'}}</td>
+				</tr>
+			</table>
+			<button ng-click="count()">{{counter}}</button>
+		</div>
+	</body>
+	<script src="js/demo10.js" type="text/javascript" charset="utf-8"></script>
+</html>

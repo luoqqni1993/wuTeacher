@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp">
+		1<my-tab>a</my-tab>
+		<!--2<div class="my-tab">b</div>-->
+		<!--注释调用左右必须得由空格隔开，否则不起任何作用-->
+		<!--3 --><!-- directive:my-tab -->
+		4<div my-tab></div>
+	</body>
+	<script type="text/javascript">
+		var app = angular.module("myApp",[]);
+		app.directive("myTab",function(){
+			return {
+				//E:element    C:class  M:comment  A:attr
+//				restrict:"E",//标明我们需要以何种方式进行调用
+//				restrict:"C",
+//				restrict:"M",
+				restrict:"E",
+				replace:true,//转换，如果是M，则必须加上它才能起效果
+//				template:"<h1>哈哈，我是自定义来的</h1>"
+				templateUrl:"demo28_tab.html"
+			}
+		});
+	</script>
+</html>

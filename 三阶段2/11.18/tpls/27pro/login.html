@@ -1,0 +1,38 @@
+<table class="table table-bordered">
+	<tr>
+		<td colspan="2" class="text-center">登录</td>
+	</tr>
+	<tr>
+		<td class="col-xs-6" style="background: url(img/login.png) center no-repeat;background-size: cover;">
+			<img src="img/login.png"/>
+		</td>
+		<td class="col-xs-6 " >
+			<form class="form-horizontal loginStyle" role="form">
+			  <div class="form-group">
+			    <label for="userID" class="col-xs-2 control-label">用户名</label>
+			    <div class="col-xs-10">
+			      <input type="text" class="form-control" id="userID" placeholder="用户名" ng-model="userID">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="password" class="col-xs-2 control-label">密码</label>
+			    <div class="col-xs-10">
+			      <input type="password" class="form-control" id="password" placeholder="密码" ng-model="password">
+			    </div>
+			  </div>
+			 <div class="form-group">
+			    <div class="col-xs-offset-2 col-xs-10">
+			      <button type="button" class="btn btn-danger" ng-click = "toLogin()">登录</button>
+			      <a href="#/register">去注册</a>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-xs-offset-2 col-xs-10">
+			      <p style="color:#f66">{{loginMessage}}</p>
+			    </div>
+			  </div>
+			</form>
+
+		</td>
+	</tr>
+</table>

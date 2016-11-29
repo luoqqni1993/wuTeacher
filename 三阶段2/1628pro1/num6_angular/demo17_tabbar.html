@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/demo17.css"/>
+		<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myFirstCtrl">
+		<div class="container">
+			<nav class="navbar-fixed-bottom footernav">
+				<ul>
+					<li class="{{current==0?'active':''}}" ng-click="changeIndex(0)">首页</li>
+					<li class="{{current==1?'active':''}}" ng-click="changeIndex(1)">分类</li>
+					<li class="{{current==2?'active':''}}" ng-click="changeIndex(2)">发现</li>
+					<li class="{{current==3?'active':''}}" ng-click="changeIndex(3)">购物车</li>
+					<li class="{{current==4?'active':''}}" ng-click="changeIndex(4)">我的</li>
+				</ul>
+			</nav>
+		</div>
+	</body>
+	<script src="js/demo17.js" type="text/javascript" charset="utf-8"></script>
+</html>

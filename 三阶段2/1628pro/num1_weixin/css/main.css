@@ -1,0 +1,70 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.ab {
+  position: absolute;
+}
+img {
+  display: block;
+  width: 100%;
+}
+.swiper-container {
+  max-width: 640px;
+  height: 100%;
+}
+.swiper-container .swiper-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-container .swiper-wrapper .swiper-slide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.swiper-container .swiper-wrapper .swiper-slide:nth-child(1) {
+  background-color: #3e88f1;
+}
+.swiper-container .swiper-wrapper .swiper-slide:nth-child(1) .index-build {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.swiper-container .swiper-wrapper .swiper-slide:nth-child(1) .index-cloud {
+  position: absolute;
+  top: 5%;
+  width: 94%;
+  left: 3%;
+}
+.swiper-container .swiper-wrapper .swiper-slide:nth-child(2) {
+  background-color: skyblue;
+}
+.swiper-container .swiper-wrapper .swiper-slide:nth-child(3) {
+  background-color: orange;
+}
+.swiper-container .swiper-wrapper .swiper-slide:nth-child(4) {
+  background-color: green;
+}
+.swiper-container .swiper-wrapper .swiper-slide:nth-child(5) {
+  background-color: yellow;
+}
+@media (orientation: landscape) {
+  .tip {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,134 @@
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 100px;
+}
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  background-color: #f1f1f1;
+}
+header {
+  height: 0.44rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #0f91c5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+header ul {
+  width: 0.8rem;
+  background-color: #57b2d7;
+  display: flex;
+  overflow: hidden;
+  border-radius: 0.2rem;
+}
+header ul li {
+  flex: 1;
+  color: #fff;
+  display: flex;
+  padding: 0.08rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header ul li.active {
+  background-color: #79c1df;
+}
+#navUl {
+  position: fixed;
+  height: 0.38rem;
+  width: 100%;
+  top: 0.44rem;
+  z-index: 999;
+  left: 0;
+  background-color: #fff;
+}
+#navUl ul {
+  display: flex;
+  height: 100%;
+}
+#navUl ul li {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+#navUl ul li.active {
+  border-bottom: 2px solid #0f91c5;
+}
+section {
+  flex: 1;
+  width: 100%;
+}
+section #headerSwiper {
+  height: 100%;
+}
+section #headerSwiper .swiper-slide {
+  height: 100%;
+}
+section #headerSwiper .swiper-slide #navSwiper {
+  height: 100%;
+  margin-top: 0.85rem;
+  width: 100%;
+  background-color: #f66;
+}
+section #headerSwiper .swiper-slide #navSwiper .swiper-slide {
+  height: 100%;
+}
+section #headerSwiper .swiper-slide #navSwiper .swiper-slide .test {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  margin-top: 0.1rem;
+}
+footer {
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  height: 0.5rem;
+  border-top: 1px solid #ccc;
+  margin-top: 0.1rem;
+  width: 100%;
+  background-color: #fff;
+}
+footer ul {
+  height: 100%;
+  display: flex;
+}
+footer ul li {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+}
+footer ul li.active {
+  color: #0f91c5;
+}
+footer ul li i.iconfont {
+  font-size: 0.2rem;
+}
+footer ul li p {
+  margin-top: 0.05rem;
+}
+footer ul li:nth-child(3) i.iconfont {
+  font-size: 0.36rem;
+  border: 1px solid #ccc;
+  padding: 0.1rem 0.1rem 0.07rem;
+  border-radius: 50%;
+  background-color: #fff;
+}
+/*# sourceMappingURL=layout.css.map */

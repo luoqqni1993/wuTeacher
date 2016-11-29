@@ -1,0 +1,54 @@
+.loginStyle{
+    height: 490px;
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loginStyle {
+    .form-group{
+         width: 100%;
+    }
+   
+}
+.classUl {
+    li{
+        list-style: none;
+        margin-right: 5px;
+        display: inline-block;
+    }
+}
+.loadEffect{
+    list-style: none;
+    li{
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        margin: 0 5px;
+        background-color: #000;
+        border-radius: 50%;
+        &:nth-child(2){
+            animation-delay: 0.2s;
+        }
+         &:nth-child(3){
+            animation-delay: 0.4s;
+        }
+    }
+}
+
+@keyframes scalePoint{
+    0%{
+        transform: scale(0.8);
+    }
+    50%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.2);
+    }
+}
+.scalePoint{
+    animation: scalePoint 0.4s linear infinite alternate both;
+}

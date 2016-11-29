@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="../build/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../build/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../build/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.myTest{
+				color:#f66;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+		
+	</body>
+	<script type="text/babel">
+		var style={
+			color:"#00f",
+			border:"1px solid #0f0"
+		}
+		var MyFirstComment = React.createClass({
+			getDefaultProps:function(){
+				console.log("test1",1);
+			},
+			getInitialState:function(){
+				console.log("test2",2);
+				return null;
+			},
+			componentWillMount:function(){
+				console.log("test3",3);
+			},
+			render:function(){
+				console.log("test4",4);
+				return <p ref="childp">测试</p>
+			},
+			componentDidMount:function(){
+				console.log("test5",5);
+			},
+		});
+		
+		ReactDOM.render(<div style={style}><MyFirstComment ></MyFirstComment></div>,document.getElementById("app"))
+		
+	</script>
+</html>

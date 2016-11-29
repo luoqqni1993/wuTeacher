@@ -1,0 +1,183 @@
+html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-size: 100px;
+}
+body{
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    display: flex;
+    background-color: #f1f1f1;
+    flex-direction: column;
+}
+
+header{
+    height: 0.44rem;
+    width: 100%;
+    background-color: #0f91c5;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    ul{
+        width: 0.8rem;
+        background-color: #57b2d7;
+        display: flex;
+        overflow: hidden;
+        border-radius: 0.2rem ;
+        li{
+            flex: 1;
+            color: #fff;
+            display: flex;
+             padding: 0.08rem;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            
+            &.active{
+                background-color: #79c1df;
+            }
+        }
+    }
+}
+#navUl{
+   position: fixed;
+    height: 0.38rem;
+    width: 100%;
+    top:0.44rem;
+    z-index: 999;
+    left:0; 
+    background-color: #fff;
+                ul{
+                    display: flex;
+                    height: 100%;
+                    li{
+                        height: 100%;
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column; 
+                        justify-content: center;
+                        align-items: center;
+                        box-sizing: border-box;
+                        &.active{
+                            border-bottom: 2px solid #0f91c5;
+                        }
+                    }
+                }
+}
+section{
+    flex: 1;
+    width: 100%;
+    overflow-y: scroll;
+//  background-color: #f66;
+    #headerSwiper{
+        height: 100%;
+        .swiper-slide{
+            height: 100%;
+//          nav{
+//              position: fixed;
+//              height: 0.38rem;
+//              width: 100%;
+//              top:0;
+//              left:0;
+//              background-color: #fff;
+//              ul{
+//                  display: flex;
+//                  height: 100%;
+//                  li{
+//                      height: 100%;
+//                      flex: 1;
+//                      display: flex;
+//                      flex-direction: column; 
+//                      justify-content: center;
+//                      align-items: center;
+//                      box-sizing: border-box;
+//                      &.active{
+//                          border-bottom: 2px solid #0f91c5;
+//                      }
+//                  }
+//              }
+//          }
+            #navSwiper{
+                height: 100%;
+                margin-top: 0.44rem;
+                width: 100%;
+                overflow-y: scroll;
+//              overflow: hidden;
+//              min-height: 100px;
+                background-color: #f66;
+                
+                .swiper-slide{
+                    height: 100%;
+                    .test{
+                        width: 100px;
+                        height: 100px;
+                        border: 1px solid #ccc;
+                        margin-top: 0.1rem;
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+}
+footer{
+    height: 0.5rem;
+    border-top: 1px solid #ccc;
+    margin-top: 0.1rem;
+    width: 100%;
+    background-color: #fff;
+    
+    ul {
+        height: 100%;
+        display: flex;
+        li{
+            height: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #999;
+            
+            &.active{
+                color: #0f91c5;
+            }
+            i{
+                &.iconfont{
+                    font-size:0.2rem;
+                }
+            }
+            p{
+                margin-top: 0.05rem;
+            }
+            
+            
+            &:nth-child(3){
+                .camera{
+                    width: 0.54rem;
+                    height: 0.54rem;
+                     border:1px solid #ccc;
+                     border-radius: 50%;
+                     margin-top: -0.04rem;
+                     display: flex;
+                     flex-direction: column;
+                     justify-content: center;
+                     align-items: center;
+                      background-color: #fff;
+                     i{
+                        &.iconfont{
+                            font-size:0.36rem;
+                        }
+                    }
+                }
+                
+                
+            }
+        }
+    }
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript">
+			document.documentElement.style.fontSize = 100 * (document.documentElement.clientWidth/320) + "px";
+		</script>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="swiper/swiper-3.4.0.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	</head>
+	<body>
+		<header>
+			<ul id="headerUl">
+				<li class="active">热点</li>
+				<li>关注</li>
+			</ul>
+		</header>
+		<nav id="navUl">
+			<ul>
+				<li class="active">足球现场</li>
+				<li>足球生活</li>
+				<li>足球美女</li>
+			</ul>
+		</nav>
+		<section>
+			<div class="swiper-container" id="headerSwiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						
+						<div class="swiper-container" id="navSwiper">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<button id="btn">设置未读消息</button>
+									<div class="test">第1个</div>
+									<div class="test">第2个</div>
+									<div class="test">第3个</div>
+									<div class="test">第4个</div>
+									<div class="test">第5个</div>
+									<div class="test">第6个</div>
+									<div class="test">第7个</div>
+									<div class="test">第8个</div>
+									<div class="test">第9个</div>
+									<div class="test">第10个</div>
+									
+								</div>
+								<div class="swiper-slide">足球生活</div>
+								<div class="swiper-slide">足球美女</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						我是关注页面
+					</div>
+				</div>
+			</div>
+			
+		</section>
+		<footer>
+			<ul>
+				<li class="active">
+					<i class="iconfont icon-shouyeshouye"></i>
+					<p>首页</p>
+				</li>
+				<li>
+					<i class="iconfont icon-sousuo"></i>
+					<p>搜索</p>
+				</li>
+				<li>
+					<div class="camera" id="camera">
+						<i class="iconfont icon-icon112"></i>
+					</div>
+					
+				</li>
+				<li>
+					<i class="iconfont icon-wode"></i>
+					<p>我的</p>
+				</li>
+				<li>
+					<i class="iconfont icon-exit"></i>
+					<p>退出</p>
+				</li>
+			</ul>
+		</footer>
+	</body>
+	<script src="js/zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/touch.js" type="text/javascript" charset="utf-8"></script>
+	<script src="swiper/swiper-3.4.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var headerSwiper = new Swiper("#headerSwiper",{
+			resistanceRatio:0,
+			onSlideChangeEnd:function(swiper){
+				var index = swiper.activeIndex;
+//				alert(swiper.activeIndex)
+				$("#headerUl").find("li").eq(index).addClass("active").siblings().removeClass("active");
+				if(index == 1){
+					$("#navUl").hide();
+				}else{
+					$("#navUl").show();
+				}
+			}
+		});
+		var navSwiper = new Swiper("#navSwiper",{
+			resistanceRatio:0,
+			onSlideChangeEnd:function(swiper){
+			var index = swiper.activeIndex;
+//				alert(swiper.activeIndex)
+				$("#navUl").find("li").eq(index).addClass("active").siblings().removeClass("active");
+			}
+		});
+		
+		$("#headerUl").find("li").on("tap",function(){
+			var index = $(this).index();
+			$(this).addClass("active").siblings().removeClass("active");
+			if(index == 1){
+				$("#navUl").hide();
+			}else{
+				$("#navUl").show();
+			}
+			headerSwiper.slideTo(index, 300, true);//切换到第一个slide，速度为1秒
+		});
+		$("#navUl").find("li").on("tap",function(){
+			var index = $(this).index();
+			$(this).addClass("active").siblings().removeClass("active");
+			navSwiper.slideTo(index, 300, true);//切换到第一个slide，速度为1秒
+		});
+		
+		$("#camera").tap(function(){
+//			getImage();
+		});
+		
+		// 拍照
+function getImage() {
+	console.log( "开始拍照：" );
+	var cmr = plus.camera.getCamera();
+	cmr.captureImage( function ( p ) {
+		console.log( "成功："+p );
+		plus.io.resolveLocalFileSystemURL( p, function ( entry ) {
+//			createItem( entry );
+		}, function ( e ) {
+			console.log( "读取拍照文件错误："+e.message );
+		} );
+	}, function ( e ) {
+		console.log( "失败："+e.message );
+	}, {filename:"_doc/camera/",index:1} );
+}
+$("#btn").tap(function(){
+	setBadge(5) 
+})
+function setBadge(num) {
+	plus.runtime.setBadgeNumber( num );
+	console.log( "设置程序图标右上角显示的提示数字为50\n请返回桌面查看" );
+	if(plus.os.name=="iOS"){
+		console.log( '*如果无法设置提示数字，请到"设置"->"通知"中配置应用在通知中心显示!' );
+	}else{
+		console.log( "注：仅支持小米(MIUI v5)，其它设备暂不支持此功能!" );
+	}
+}
+	</script>
+</html>

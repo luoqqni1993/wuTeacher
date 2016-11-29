@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="../build/react.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../build/react-dom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../build/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.myTest{
+				color:#f66;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+		
+	</body>
+	<script type="text/babel">
+		var style={
+			color:"#00f",
+			border:"1px solid #0f0"
+		}
+		var MyFirstComment = React.createClass({
+			render:function(){
+				return <ul>
+					<li key="1">第1个</li>
+					<li key="2">第2个</li>
+					<li key="3">第3个</li>
+				</ul>
+			}
+		});
+		
+		ReactDOM.render(<div style={style}><MyFirstComment ></MyFirstComment></div>,document.getElementById("app"))
+		
+	</script>
+</html>

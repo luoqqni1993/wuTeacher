@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/demo27.css"/>
+	<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app = "myApp" ng-controller="myCtrl">
+		<div class="container" >
+			<table class="table table-bordered">
+				<tr class="well">
+					<td class="col-xs-4">
+						<a href="#/home">首页</a>
+					</td>
+					<td class="col-xs-4" >
+						<a href="#/cart" ng-show="isLogin">购物车</a>
+					</td>
+					<td class="col-xs-4">
+						<a href="#/login" ng-hide="isLogin">去登录{{isLogin}}</a>
+						<a href="#" ng-show="isLogin" ng-click="exit()">退出{{isLogin}}</a>
+					</td>
+				</tr>
+			</table>
+			<ng-view></ng-view>
+		</div>
+	</body>
+	<!--<script src="js/demo27.js" type="text/javascript" charset="utf-8"></script>-->
+	<script src="js/demo27_app.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/demo27_config.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/demo27_myCtrl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/demo27_homeCtrl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/demo27_loginCtrl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/demo27_registerCtrl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/demo27_cartCtrl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/demo27_detailCtrl.js" type="text/javascript" charset="utf-8"></script>
+</html>

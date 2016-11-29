@@ -1,0 +1,14 @@
+.slide-image{
+    width: 100%;
+}
+
+.wx-swiper-dot{
+
+    width: 20px;
+
+    height: 20px;
+    background-color: #f66
+}
+.wx-swiper-dot:active{
+    background-color: #00f
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
+		<style type="text/css">
+			.classUl li{
+				list-style: none;
+				margin-right: 5px;
+				display: inline-block;
+			}
+		</style>
+		<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<div class="container" >
+			<table class="table table-bordered">
+				<tr class="well">
+					<td colspan="5">
+						查看走秀的商品分类列表页http://datainfo.duapp.com/shopdata/getclass.php
+					</td>
+					<td>
+						<input ng-model="goodName" placeholder="输入您要搜索的商品名称"/>
+					</td>
+				</tr>
+				<tr class="well">
+					<td>筛选条件</td>
+					<td colspan="5" ng-show="isLoadindList">正在加载产品列表名称{{time1}}</td>
+					<td colspan="5" ng-hide="isLoadindList">
+						<!--<button class="btn btn-danger" ng-click="filterData('')">全部</button>
+						<button class="btn btn-primary" ng-click="filterData('衬衫')">衬衫</button>
+						<button class="btn btn-primary" ng-click="filterData('礼服')">礼服</button>-->
+						<ul class="classUl">
+							<li><button class="btn btn-danger" ng-click="getHotList()">热卖</button></li>
+							<li ng-repeat="class in classList">
+								<button class="btn btn-primary" ng-click="searchData(class)">{{class.className}}</button>
+							</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>序号</td>
+					<td>商品的ID</td>
+					<td>商品名称</td>
+					<td>商品图片</td>
+					<td>商品价格</td>
+					<td>商品折扣</td>
+					<td>操作</td>
+				</tr>
+				<tr ng-show="isLoading">
+					<td colspan="6" class="text-center">
+						{{loadingContent}}{{time}}
+					</td>
+				</tr>
+				<tr ng-hide="isLoading" ng-repeat="pro in proList | filter :{goodsName:goodName} ">
+					<td>{{$index+1}}</td>
+					<td>{{pro.goodsID}}</td>
+					<td>{{pro.goodsName}}</td>
+					<td><img src="{{pro.goodsListImg}}" style="width: 80px;height: 80px;"/></td>
+					<td>{{pro.price}}</td>
+					<td>{{pro.discount}}</td>
+					<td>
+						<button onclick="isLogin?addShopCar():goLogin()">加入购物车</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<script src="js/demo24.js" type="text/javascript" charset="utf-8"></script>
+</html>

@@ -1,0 +1,9 @@
+<view>发现
+<button bindtap="openAction">操作</button>
+<button bindtap="compassChange">获取罗盘信息</button>
+<button bindtap="requestData">请求数据</button>
+<view wx:if="{{isShow}}">正在加载</view>
+<block wx:for="{{classList}}">
+    <view>{{item.className}}</view>
+</block>
+ </view>

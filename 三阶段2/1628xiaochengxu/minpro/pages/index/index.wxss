@@ -1,0 +1,55 @@
+/**index.wxss**/
+.main-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main-nav{
+  height: 35px;
+  width: 100%;
+  
+}
+.main-nav ul{
+   height: 35px;
+   width: 100%;
+   display: flex;
+   background-color: #fff;
+   border-bottom: 1px solid #ccc;
+}
+.main-nav ul li{
+  flex: 1;
+  font-size: 14px;
+  display: flex;
+  height: 35px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.main-nav ul li.active{
+  color:#3cc51f;
+  border-bottom:2px solid #3cc51f;
+}
+
+.slide-image{
+  width: 100%;
+}
+
+.main-list{
+  flex: 1;
+  width: 100%;
+}
+.swiper-item{
+  height: 100%
+}
+.proList{
+  width: 100%;
+}
+.proList li{
+  width: 100%;
+  display: block;
+  height: 120px;
+  background-color: #eee;
+  border-bottom:1px solid #fff;
+}

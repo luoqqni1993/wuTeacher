@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		{{message16 | uppercase}}
+		{{message8 | uppercase}}
+		{{message | calFilter}}
+	</body>
+	<script type="text/javascript">
+		var app = angular.module("myApp",[]);
+		app.service("mainServer",function(){
+			this.trans = function(a){
+				return a+"1";
+			}
+//			return this;
+		});
+		app.service("calServer",function(){
+			this.trans16 = function(a){
+				return a.toString(16);
+			}
+			this.trans8 = function(a){
+				return a.toString(2);
+			}
+//			return this;
+		});
+		
+		app.filter("calFilter",function(){
+			return function(a){
+			  return a.toString(8)
+			}
+		})
+		app.controller("myCtrl",["$scope","mainServer","calServer",function($scope,mainServer,calServer){
+			$scope.message16 = calServer.trans16(255);
+			$scope.message8 = calServer.trans8(255);
+			$scope.message = 255
+		}])
+	</script>
+</html>

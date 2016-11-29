@@ -1,0 +1,17 @@
+我是产品的详情{{goodsID}}
+<div ng-show="isLoading">
+	<ul class="loadEffect">
+		<li class="scalePoint"></li>
+		<li class="scalePoint"></li>
+		<li class="scalePoint"></li>
+	</ul>
+</div>
+<div class="media" ng-hide="isLoading">
+  <a class="media-left" href="#">
+    <img src="{{product.goodsListImg}}" alt="...">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading">{{product.goodsName}}</h4>
+  </div>
+</div>
+

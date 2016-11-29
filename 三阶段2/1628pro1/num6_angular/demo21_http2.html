@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
+		<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<div class="container" >
+			<table class="table table-bordered">
+				<tr class="well">
+					<td colspan="8">
+						查看走秀的商品分类列表页http://datainfo.duapp.com/shopdata/getclass.php
+					</td>
+					
+				</tr>
+				<tr>
+					<td>序号</td>
+					<td>商品的分类ID</td>
+					<td>商品分类名称</td>
+				</tr>
+				<tr ng-show="isLoading">
+					<td colspan="3" class="text-center">
+						{{loadingContent}}{{time}}
+					</td>
+				</tr>
+				<tr ng-hide="isLoading" ng-repeat="class in classList ">
+					<td>{{$index}}</td>
+					<td>{{class.classID}}</td>
+					<td>{{class.className}}</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<script src="js/demo21.js" type="text/javascript" charset="utf-8"></script>
+</html>

@@ -1,0 +1,34 @@
+1、div#wrapper>div#srcoll-----表示scroll里面的是可以滚动的区域
+2、div#srcoll>div#pullDwun{下拉}+ul + div#pullUp{上拉}
+3、将上拉和下拉字样变得不可见,与定位结合使用
+4、实例化IScroll 
+	var myScroll = new ISroll(ele,obj)
+	ele------"#wrapper"/doument.getElementById("wrapper");
+	obj----/*需要使用iscroll-probe.js才能生效probeType：1  滚动不繁忙的时候触发
+			probeType：2  滚动时每隔一定时间触发
+			probeType：3  每滚动一像素触发一次*/
+			probeType: 3,
+			//        momentum: false,//关闭惯性滑动
+			mouseWheel: true, //鼠标滑轮开启
+			scrollbars: false, //滚动条可见
+			fadeScrollbars: true, //滚动条渐隐
+			interactiveScrollbars: true, //滚动条可拖动
+			shrinkScrollbars: 'scale', // 当滚动边界之外的滚动条是由少量的收缩
+			useTransform: true, //CSS转化
+			useTransition: true, //CSS过渡
+			bounce: true, //反弹-----切记不要设置为false,否则不会上拉和下拉
+			freeScroll: false, //只能在一个方向上滑动
+			startX: 0,
+			startY: 0,
+5、给myScroll这个对象绑定该绑定事件 
+	scroll--滚动事件
+	scrollEnd----滚动结束事件（如果需要满足条件就触发相应操作，那么不需要这个事件）
+	
+	注：切记写法，不要直接写匿名函数，因为这是iscroll5的一个坑
+	myScroll.on("scroll",test);
+	myScroll.on("scrollEnd",action)
+6、因为触发操作的时机和滚动的时机不在一起，那么我们通过变量标识去实现结合
+	var pullDownFlag = 0;//1表示刷新
+	var pullUpFlag = 0;//1表示加载
+	判断状态码在scroll事件中判断更新信息，在结束滚动事件中执行操作
+7、执行操作完成必须调用myScroll.refresh()	去更新我们的滚动区域

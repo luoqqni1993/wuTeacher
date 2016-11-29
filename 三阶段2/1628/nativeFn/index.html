@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			// 扩展API加载完毕后调用onPlusReady回调函数 
+			document.addEventListener( "plusready", onPlusReady, false );
+			// 扩展API加载完毕，现在可以正常调用扩展API 
+			function onPlusReady() {
+				
+			}
+		</script>
+	</head>
+	<body>
+		<button id="btn">拍照</button>
+		<button id="btn1">摄像</button>
+		<img src="" alt="" id="img" />
+	</body>
+	<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$("#btn").on("touchend",function(){
+//			alert("我要拍照")
+			getPic();
+			
+		});
+		$("#btn1").on("touchend",function(){
+//			alert("我要拍照")
+			videoCapture();
+			
+		});
+		
+		function getPic(){
+			var cmr = plus.camera.getCamera();
+				//设置拍照的默认的分辨率
+				var res = cmr.supportedImageResolutions[0];
+				//设置的拍照的照片的格式png/jpg
+				var fmt = cmr.supportedImageFormats[0];
+				cmr.captureImage(function(path ){
+					plus.gallery.save(path)
+					$("#img").attr("src",path);
+					console.log(path)
+				},function(error){
+					alert(error.message);
+				},{
+					resolution:res,
+					format:fmt
+				})
+//				alert( "Camera supperted image resolutions: " + cmr.supportedImageFormats    );
+		}
+		//定时器，限制用户摄像的时间 ----- 微信小视频
+		var cmrTime=null;
+		//摄像头对象
+		var videoCmr = null;
+		function videoCapture(){
+			videoCmr = plus.camera.getCamera();
+			//设置摄像的默认的分辨率
+			var res = videoCmr.supportedVideoResolutions[0];
+			//设置的摄像的文件格式，ios mp4
+			var fmt = videoCmr.supportedVideoFormats[0];
+			console.log("Resolution: "+res+", Format: "+fmt);
+			videoCmr.startVideoCapture( function( path ){
+					alert( "Capture video success: " + path );  
+				},
+				function( error ) {
+					alert( "Capture video failed: " + error.message );
+				},
+				{resolution:res,format:fmt}
+			);
+			
+			cmrTime = setTimeout(stopVideo,10000);
+		}
+		function stopVideo(){
+			videoCmr.stopVideoCapture();
+			clearTimeout(cmrTime);
+		}
+	</script>
+</html>

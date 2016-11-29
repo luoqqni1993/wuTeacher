@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;list-style: none;box-sizing: border-box;}
+			ul li{
+				height: 31px;
+				width: 100%;
+				line-height: 30px;
+				border-bottom: 1px solid #000;
+				position: relative;
+			}
+			ul li div,ul li span{
+				position: absolute;
+			}
+			ul li div{
+				left: 0;
+				width: 100%;
+				z-index: 66;
+				
+				background-color: #f66;
+			}
+			ul li span{
+				right: 0;
+				width: 60px;
+				text-align: center;
+				background-color: #00f;
+				display: block;
+				z-index: 55;
+			}
+			#box,#pox{
+				width: 150px;
+				height: 150px;
+				margin-top: 10px;
+				
+			}
+			#box{
+				background-color: #00f;
+			}
+			#pox{
+				background-color: #0f0;
+			}
+			#test{
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,0.4);
+				top:0;
+				left:0;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<div>第1项</div>
+				<span>删除</span>
+			</li>
+			<li>
+				<div>第2项</div>
+				<span>删除</span>
+			</li>
+			<li>
+				<div>第3项</div>
+				<span>删除</span>
+			</li>
+		</ul>
+		<div id="box"></div>
+		<div id="pox"></div>
+		<div id="test"></div>
+	</body>
+	<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+	<script src="fastclick.js" type="text/javascript" charset="utf-8"></script>
+	<script src="src/fx.js" type="text/javascript" charset="utf-8"></script>
+	<script src="src/touch.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$("ul").find("li").on("swipeLeft",function(){
+			$("ul").find("li").find("div").animate({
+				"left":"0"
+			},500);
+			$(this).find("div").animate({
+				"left":"-60px"
+			},500);
+		});
+		$("ul").find("li").on("swipeRight",function(){
+			
+			$(this).find("div").animate({
+				"left":"0"
+			},500);
+		});
+		window.addEventListener('load', function() {
+			new FastClick(document.body);
+		});
+		
+		$("#test").on("tap",function(){
+			$(this).hide();
+		})
+		$("#box").on("click",function(){
+			console.log("box");
+		})
+		$("#pox").on("longTap",function(){
+			console.log("pox");
+		})
+	</script>
+</html>

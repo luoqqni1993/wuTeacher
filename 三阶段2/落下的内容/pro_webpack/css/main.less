@@ -1,0 +1,170 @@
+*{padding: 0;margin: 0;list-style: none;box-sizing: border-box;}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #eee;
+}
+html{
+    font-size: 100px;
+}
+body{
+    font-size: 12px;
+}
+
+#app{
+    width: 100%;
+    height: 100%;
+    #main{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        header{
+            &#header{
+                width: 100%;
+                height: 0.44rem;
+                background-color: #f66;
+                color: #fff;
+                text-align: center;
+                line-height: 0.44rem;
+                font-size: 18px;
+                
+                ul{
+                    width: 100%;
+                    display: flex;
+                    li{
+                        &.back{
+                            width: 60px;
+                        }
+                        &.title{
+                            flex: 1;
+                            text-shadow: 1px 1px 1px #000;
+                        }
+                        &.more{
+                            width: 60px;
+                        }
+                    }
+                }
+            }
+        }
+        section{
+            &#section{
+                flex: 1;
+                overflow:scroll;
+                .swiper-container{
+                    width:100%;
+                    height:1.2rem;
+                    background-color:#ccc;
+                    .swiper-wrapper{
+                        height:100%;
+                        .swiper-slide{
+                            height:100%;
+                        }
+                    }
+                }
+
+                .proList{
+                    .proItem{
+                        width:100%;
+                        height:1rem;
+                        display:flex;
+                        background-color:#fff;
+                        position:relative;
+
+                        &:after{
+                            content:"";
+                            position:absolute;
+                            width:100%;
+                            height:1px;
+                            bottom:0;
+                            left:0;
+                            background-color:#000;
+                            transform-origin:top left;
+                            transform:scaleY(0.5); 
+                        }
+
+
+
+                        .proImg{
+                            width:1rem;
+                            height:1rem;
+                            display:flex;
+                            flex-direction:column;
+                            justify-content:center;
+                            align-items:center;
+                            img{
+                                width:0.9rem;
+                                height:0.9rem;
+                            }
+
+
+                        }
+                        .proInfo{
+                             flex:1;
+                            margin-left:0.1rem;
+                            margin-right:0.05rem;
+                            margin-top:0.08rem;
+                            height:0.87rem;
+                        //    background-color:#00f;
+                            position:relative;
+                            .proName{
+
+                            }
+                            .proPrice{
+
+                            }
+                            .proDisCount{
+
+                            }
+                            .cartBtn{
+                                display:block;
+                                width:0.6rem;
+                                height:0.3rem;
+                                background:-webkit-linear-gradient(#f3658d 0,#da1c58 100%);
+                                text-align:center;
+                                line-height:0.3rem;
+                                position:absolute;
+                                border-radius:0.04rem;
+                                bottom:0;
+                                right:0;
+                                i{
+                                    &.iconfont{
+                                        font-size:0.22rem;
+                                        color:#fff;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        footer{
+            &#footer{
+                width: 100%;
+                height: 0.5rem;
+                background-color: #333;
+                color: #fff;
+                z-index:9999;
+                ul{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    li{
+                        height: 100%;
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        
+                        &.active{
+                            color:#f66;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

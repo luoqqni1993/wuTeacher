@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css"/>
+		<script src="js/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<div class="container" >
+			<table class="table table-bordered">
+				<tr class="well">
+					<td colspan="8">
+						看谁最瘦，欢迎投票
+					</td>
+					
+				</tr>
+				<tr>
+					<td>firstName</td>
+					<td>lastName</td>
+					<td>sex</td>
+					<td>salary</td>
+					<td>likeNum</td>
+					<td>disLikeNum</td>
+					<td>age</td>
+					<td>birthday</td>
+				</tr>
+				<tr ng-repeat="person in persons ">
+					<td>{{person.firstName | uppercase}}</td>
+					<td>{{person.lastName | lowercase}}</td>
+					<td>{{person.sex | uppercase}}</td>
+					<td>{{person.salary | currency : "￥" : 0}}</td>
+					<td>{{person.like}}
+						<button class="btn btn-xs btn-success" ng-click="countLikeNum(person)">喜欢</button>
+					</td>
+					<td>{{person.disLike}}
+						<button class="btn btn-xs btn-danger" ng-click="countDisLikeNum(person)">不喜欢</button>
+					</td>
+					<td>{{person.age | number:0}}</td>
+					<td>{{person.birthday | date : 'yyyy-MM-dd'}}</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<script src="js/demo20.js" type="text/javascript" charset="utf-8"></script>
+</html>

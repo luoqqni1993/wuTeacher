@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var worker = new Worker('webwoker.js');
+			//onmessage用于接收传递回来的数据
+			worker.onmessage = function(e) {
+				//接受的数据就是e.data
+				alert('和：' + e.data);
+			};
+
+			function calculate() {
+				var num = 10000000000;
+				//postMessage就是直接向woker传递数据
+				worker.postMessage(num);
+				console.log("22222")
+			}
+			calculate();
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

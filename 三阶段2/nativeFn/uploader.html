@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			// 扩展API加载完毕后调用onPlusReady回调函数 
+			document.addEventListener( "plusready", onPlusReady, false );
+			// 扩展API加载完毕，现在可以正常调用扩展API 
+			function onPlusReady() {
+				console.log("111111111")
+				var userImg = plus.storage.getItem("userImg");
+				if(userImg){
+					alert(userImg)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="files"></ul>
+		<img src="../icon.png" style="width: 100px;height: 100px;" id="img"/>
+	</body>
+	<script src="zepto_1.1.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var server="http://demo.dcloud.net.cn/helloh5/uploader/upload.php";
+		$("#img").on("touchend",function(){
+			plus.camera.getCamera().captureImage(function(p){
+				appendFile(p);
+				upload();
+			});	
+			
+		});
+		
+		var files=[];
+		// 上传文件
+		function upload(){
+//			alert(1)
+			if(files.length<=0){
+				plus.nativeUI.alert("没有添加上传文件！");
+				return;
+			}
+			console.log("开始上传：")
+			var wt=plus.nativeUI.showWaiting();
+			var task=plus.uploader.createUpload(server,
+				{method:"POST"},
+				function(t,status){ //上传完成
+					if(status==200){
+						console.log("上传成功："+t.responseText);
+						plus.storage.setItem("userImg",t.responseText);
+						console.log(typeof t.responseText)
+						var data = JSON.parse(t.responseText);
+						var files = data.files.uploadkey0.url;
+						$("#img").attr("src",'http://demo.dcloud.net.cn/helloh5/uploader/'+files)
+						wt.close();
+					}else{
+						console.log("上传失败："+status);
+						wt.close();
+					}
+				}
+			);
+			task.addData("client","HelloH5+");
+			task.addData("uid",getUid());
+			for(var i=0;i<files.length;i++){
+				var f=files[i];
+				task.addFile(f.path,{key:f.name});
+			}
+			task.start();
+		}
+		// 添加文件
+		var index=0;
+		function appendFile(p){
+			index = 0;
+			var fe=document.getElementById("files");
+			var li=document.createElement("li");
+			var n=p.substr(p.lastIndexOf('/')+1);
+			li.innerText=n;
+			fe.appendChild(li);
+			files.push({name:"uploadkey"+index,path:p});
+			index++;
+		}
+		// 产生一个随机数
+		function getUid(){
+			return Math.floor(Math.random()*100000000+10000000).toString();
+		}
+	</script>
+</html>

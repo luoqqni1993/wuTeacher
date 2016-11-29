@@ -1,0 +1,234 @@
+angular
+	1、MVC思想
+		M：module/model---数据模型
+		V:view ---- 视图
+		C:controller --- 控制器（一个M和V的连接器）
+	2、如何定义一个module
+		html中的一个标签中写上指令
+			<body ng-app="myApp">
+		js中去实例化
+			var app = angular.module("myApp",[]);
+	3、如何定义一个控制器
+		html中找一个标签存放我们的控制器
+		<div ng-controller="myCtrl"></div>
+		js中去定义
+		app.controller("myCtrl",["$scope",function($scope){
+			//我们可以定义我们需要的数据，但是必须得挂载到我们$scope上
+			$scope.message = "1628angular";
+			//可以定义我们常用的一些数据，复杂的也行，数组，对象，字符串，函数。。。。。
+			
+		}])
+	4、循环
+		采用指令ng-repeat
+		比如说我们有一个数据 var lists= [1,2,4,6];
+		暴漏我们的数据出去，在控制器中通过$scope.lists = lists;这样的话我们在view中就可以直接使用{{lists}}
+		//list指代的就是我们的每一个数据，而lists就是我们在控制器中暴漏的那个数据
+		<div ng-repeat="list in lists">
+			{{list}}//就是我们需要显示的数据
+		</div>
+		如果我们需要显示数据的序号，那么我们直接通过{{$index}}去显示
+		有时候我们的数据是多层结构的，那么我们就可以使用我们的{{$parent.$index}}去显示父级的序号
+	5、数据的双向绑定（input/textarea/select..）
+		给文本域添加一个指令ng-model="name"
+			<input ng-model="userName"/>
+			姓名：{{userName}}
+		在此时，当我们用户进行输入我们的数据时，我们就可以直接的把输入的数据显示出来
+		如果我们需要在刚开始就显示我们初始数据，那么我们就可以在控制器中添加一个属性
+		$scope.userName = "wxx";
+		
+		体现了一个MVVM的思想，当我们的数据发生改变的时候，视图会变，当我们在视图中进行输入的时候，我们的视图发生了改变，那么数据也在发生着改变 Model View View Model
+	6、事件绑定ng-click
+		html元素中添加ng-click="event(para)",event表示事件名称，para表示参数
+		如果是在列表persons中每一项person进行一个点击事件，那么我们的参数就是当前这个对象evetnt(person),
+		js中在控制器中可以通过$scope.event=function(obj){obj.like++};
+	7、过滤器
+		{{表达式 | 过滤器名称 ： 5(可选)}}
+		uppercase/lowercase/number/currency/date
+		别的过滤器有哪些，并且去尝试写案例
+		排序：orderBy  结合ng-repeat使用的   MVVM  
+			select、input
+			正序（orderBy:'firstName'）、倒序(orderBy:'-firstName')
+			
+			orderBy:sortData:reverseData
+		
+		输入检索filter  <input ng-model="searchTxt"/>
+			列表渲染处   | filter:searchTxt
+			小故事：英文检索的不彻底
+			
+		自定义filter
+			{{person.sex | sexFilter}}
+			app.filter("sexFilter",function(){
+				return function(sex){
+					if(sex == "1"){
+						return "男";
+					}else if(sex == "0"){
+						return "女"
+					}
+				}
+			});
+	8、显示隐藏指令
+		ng-show  ng-hide
+	9、初始化数据指令
+		//不建议大家使用这种方式定义我们的初始数据
+		ng-init="users=['1','2',3]"   ng-repeat="user in users"  {{user}}
+	10、包含指令
+		ng-include 
+		ng-include = "**.html" 在该 显示的位置就会显示出你拿到的内容
+	11、$http服务
+		请求本地数据
+			$http.get("test.json").then(function(result){
+				console.log(result)
+			})
+		请求服务器数据（走秀），jsonp接口的在地址后面加一个?callback=JSON_CALLBACK
+		 $http.jsonp("http://datainfo.duapp.com/shopdata/getGoods.php?callback=JSON_CALLBACK") .success(function(data) { 
+			console.log(data)
+		});
+		提交数据
+			配置$httpProvider
+			app.config(function($httpProvider){  
+			   $httpProvider.defaults.transformRequest = function(obj){  
+			     var str = [];  
+			     for(var p in obj){  
+			       str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));  
+			     }  
+			     return str.join("&");  
+			   }  
+			   $httpProvider.defaults.headers.post = {  
+			        'Content-Type': 'application/x-www-form-urlencoded'  
+			   }  
+			});  
+			提交数据
+			$http({
+				method:"POST",
+				url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+				data:{
+					"status":"register",
+					"userID":"xiha",
+					"password":"123"
+				},
+				 headers:{'Content-Type': 'application/x-www-form-urlencoded'},  
+			   	transformRequest: function(obj) {  
+			     var str = [];  
+			     for(var p in obj){  
+			       str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));  
+			     }  
+			     return str.join("&");  
+			   }  
+			}).success(function(data){
+				console.log(data)
+			})
+			
+	12、服务
+		app.service("mainService",function(){
+			//内部其实就是一个构造函数
+		})
+		我们可以解决很多事情，比如我们可以把我们当前控制器中的每一个模块进行划分
+	13、锚点链接
+		<button id="top" ng-click="scrollTo('buttom')">底部</button>
+		<div style="width:300px;">
+			Angular Angular is a development platform for building mobile and desktop web applications. This is the repository for Angular 2, both the JavaScript (JS) and Dart versions. Angular 2 is currently in Beta. Quickstart Get started in 5 minutes. Want to
+			help? Want to file a bug, contribute some code, or improve documentation? Excellent! Read up on our guidelines for contributing and then check out one of our issues in the hotlist: community-help. The MIT License Copyright (c) 2014-2016 Google, Inc.
+			http://angular.io Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights
+			to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission
+			notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+			PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+			USE OR OTHER DEALINGS IN THE SOFTWARE.
+		</div>
+		<button id="buttom" ng-click="scrollTo('top')">顶部</button>
+	
+		myApp.controller('myController', function($scope, $anchorScroll, $location) {
+			$scope.scrollTo = function(scrollLocation){
+				$location.hash(scrollLocation);
+				$anchorScroll();
+			}
+		})
+	14、路由
+		引入路由文件
+		<script type="text/javascript" src="js/angular-route.min.js"></script>
+		页面中写一个
+		<a href="#/home">Home</a>
+		<a href="#/courses">Courses</a>
+		<a href="#/employees/{{id}}">employees</a>
+		在需要的位置写一个<ng-view></ng-view>
+		在js中配置路由
+		var app = angular.module('myApp', ['ngRoute'])
+		.config(function($routeProvider) {
+			$routeProvider.caseInsensitiveMatch = true;
+			$routeProvider
+				.when("/home", {
+					templateUrl: "url",
+					controller: "homeController"
+				})
+				.when("/courses", {
+					templateUrl: "url",
+					controller: "coursesController"
+				})
+				.when("/employees/:test", {
+					templateUrl: "url",
+					controller: "employeesController"
+				})
+				.otherwise({
+					redirectTo: "/home"
+				})
+		})
+	15、controller as
+		书写之后可以不用注入我们的$scope,直接使用this代替
+		ng-controller="myCtrl as mainCtrl"
+		{{mainCtrl.message}}
+		app.controller("myCtrl",function(){
+			this.message = "我是myCtrl"
+		})
+	16、URL地址忽略大小写
+		在config中添加
+		$routeProvider.caseInsensitiveMatch = true;
+	17、自定义指令
+		在前端开发中,我们会遇到很多地方都会用到同一种类型的控件。AngularJS提供了自定义指令功能，我们可以在指令里面定义特定的html模板。提供给前台html调用.
+		 Note: 1.命名方式:directive必须以小写字母开头，其中如果后面由大写字母，html调用的时候就要用 - 将单词分开.
+		 app.directive('myCnblogs',function(){
+			return {
+				restrict: 'E',
+				replace: false,
+				template:'<a href="http://www.cnblogs.com/">Go to cnblogs</a>'
+			}
+		})
+		指令元素介绍:
+            2.1  restrict
+				常用的restrict有E,A,C三种设置。这些设置可以混用,比如EA,AC。不需要符号隔开
+				E(Element)：元素,使用格式是<my-directive></my-directive>
+				A(Propertity): 属性，使用格式:<div my-directive></div>
+				C(Class): 类, 使用格式:<div class='my-directive'></div>
+				M(commit)：注释指令<!-- directive：my-directive --></div>
+            2.2 repleace M注释必须为true才能解析   把当前自定义的指令标签替换成引入的标签
+			2.3 termplate:
+				template 是设置对应的html模板, 如果有html换行那就要在每一句末尾加上 / 符号. 如果html代码较多，可以通过设置templateurl: urlpath，来加载对应当的代码模板
+		向指令内部添加数据
+			通过设置scope简单的实现了数据的绑定.
+				scope:{
+					myurl:"@",
+					mycontent:"@"
+				},
+				template: '<a href="{{myurl}}">{{mycontent}}</a>'
+				html
+				<div my-Directive myurl='http://www.cnblogs.com/' mycontent='go to blogs'></div>
+				
+			自定义控件绑定$scope分为 @，=，& 三种情况。
+             @  本地作用域属性：使用@符号将本地作用域同DOM属性的值进行绑定。
+             =  双向绑定：通过=可以将本地作用域上的属性同父级作用域上的属性进行双向的数据绑定。 就像普通的数据绑定一样，本地属性会反映出父数据模型中所发生的改变
+             &  父级作用域绑定 通过&符号可以对父级作用域进行绑定，以便在其中运行函数。意味着对这个值进行设置时会生成一个指向父级作用域的包装函数.	
+			 
+			 link;
+				dom操作
+				link : function( scope , element , attr ){ //dom操作  
+                        element.on('click','a',function(){  
+                            $(this).addClass('first').siblings('a').removeClass('first');  
+                            $(this).siblings('div').eq($(this).index()).css('display','block').siblings('div').css('display','none')  
+                        });  
+                    }  
+			 
+				
+				
+				
+				
+				
+				
+			

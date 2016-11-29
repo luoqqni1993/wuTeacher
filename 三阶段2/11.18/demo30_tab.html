@@ -1,0 +1,36 @@
+<div id="{{myId}}">
+	<div class="ctrl">
+		<button ng-repeat="btn in myBtndata" class="{{$index == 0 ? 'active':''}}">{{btn}}</button>
+		<!--<button class="active">第1个</button>
+		<button>第2个</button>
+		<button>第3个</button>
+		<button>第4个</button>
+		<button>第5个</button>-->
+	</div>
+	<div class="showInfo">
+		<div class="info" ng-repeat="girl in myData" style="{{$index==0 ? 'display: block;': 'display:none'}}">
+			<img ng-src="{{girl.img}}"/>
+			<p>{{girl.info}}</p>
+		</div>
+		<!--<div class="info" style="display: block;">
+			<img src="img/1.jpg"/>
+			我是第1个
+		</div>
+		<div class="info">
+			<img src="img/2.jpg"/>
+			我是第2个
+		</div>
+		<div class="info">
+			<img src="img/3.jpg"/>
+			我是第3个
+		</div>
+		<div class="info">
+			<img src="img/4.jpg"/>
+			我是第4个
+		</div>
+		<div class="info">
+			<img src="img/5.jpg"/>
+			我是第5个
+		</div>-->
+	</div>
+</div>
